@@ -79,7 +79,7 @@
 || Person emails should be 2 alphanumeric/period strings separated by '@'
 || ===================================================
 || Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail a/not, an, address]
-|| Person address should consist of 4 parts: BLOCK, STREET, UNIT, POSTAL_CODE 
+|| Person address should consist of 4 parts: BLOCK, STREET, UNIT, POSTAL_CODE
 || ===================================================
 || Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail a/not_numbers, street, #1-22, 243242]
 || Address's block should only contain numbers
@@ -294,9 +294,9 @@
 || ===================================================
 || Enter command: || [Command entered:  list]
 || 	1. Betsy Choo Tags: [secretive]
-|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street, #4-44, 444444  Tags: [friends]
+|| 	2. Dickson Ee Phone: 444444 Address: 444, delta street, #4-44, 444444 Tags: [friends]
 || 
-|| 6 persons listed!
+|| 2 persons listed!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
