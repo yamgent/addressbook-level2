@@ -84,6 +84,12 @@ public class StorageFile {
      * @throws StorageOperationException if there were errors converting and/or storing data to file.
      */
     public void save(AddressBook addressBook) throws StorageOperationException {
+        
+        try {
+            ensureStorageFileExists();
+        } catch (FileNotFoundException fnfe) {
+            throw new StorageOperationException("Error trying to find file: " + path);
+        }
 
         /* Note: Note the 'try with resource' statement below.
          * More info: https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html
@@ -100,6 +106,19 @@ public class StorageFile {
             throw new StorageOperationException("Error writing to file: " + path);
         } catch (JAXBException jaxbe) {
             throw new StorageOperationException("Error converting address book into storage format");
+        }
+    }
+
+    /**
+     * Ensures that the storage file actually exists on disk.
+     * 
+     * @throws FileNotFoundException if someone wiped that file while the program
+     * is in operation.
+     */
+    private void ensureStorageFileExists() throws FileNotFoundException {
+        File storageFile = path.toFile();
+        if (!storageFile.exists()) {
+            throw new FileNotFoundException("Storage file " + path + "does not exist");
         }
     }
 
