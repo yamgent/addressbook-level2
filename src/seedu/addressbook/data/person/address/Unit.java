@@ -27,7 +27,7 @@ public class Unit {
     }
 
     /**
-     * Returns true if a given string is a valid person email.
+     * Returns true if a given string is a valid address unit.
      */
     public static boolean isValidUnit(String test) {
         return test.matches(UNIT_VALIDATION_REGEX);
