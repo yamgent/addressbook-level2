@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -146,9 +147,16 @@ public class StorageFile {
 
         // create empty file if not found
         } catch (FileNotFoundException fnfe) {
-            final AddressBook empty = new AddressBook();
-            save(empty);
-            return empty;
+            final AddressBook emptyAddressBook = new AddressBook();
+            
+            try {
+                createEmptyFile(path);
+            } catch (IOException ioe) {
+                throw new StorageOperationException("Error writing to file: " + path);
+            }
+            
+            save(emptyAddressBook);
+            return emptyAddressBook;
 
         // other errors
         } catch (IOException ioe) {
@@ -157,6 +165,20 @@ public class StorageFile {
             throw new StorageOperationException("Error parsing file data format");
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
+        }
+    }
+
+    /**
+     * Creates a completely empty file on the specified location.
+     * 
+     * @param filePath where the empty file should be created.
+     * @throws IOException if we have problems querying for the file.
+     * @throws FileAlreadyExistsException if file already exist. 
+     */
+    private void createEmptyFile(Path filePath) throws IOException, FileAlreadyExistsException {
+        File file = filePath.toFile();
+        if (!file.createNewFile()) {
+            throw new FileAlreadyExistsException(filePath + "already exists.");
         }
     }
 
