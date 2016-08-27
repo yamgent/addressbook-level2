@@ -22,10 +22,7 @@ public class TextUi {
     /** Offset required to convert between 1-indexing and 0-indexing.  */
     public static final int DISPLAYED_INDEX_OFFSET = 1;
 
-    /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
-    private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
-
-    private final Scanner in;
+    private final InputProcessor inputProcessor;
     private final PrintStream out;
 
     public TextUi(){
@@ -33,29 +30,8 @@ public class TextUi {
     }
 
     public TextUi(InputStream in, PrintStream out) {
-        this.in = new Scanner(in);
+        this.inputProcessor = new InputProcessor(in);
         this.out = out;
-    }
-
-    /**
-     * Returns true if the user input line should be ignored.
-     * Input should be ignored if it is parsed as a comment, is only whitespace, or is empty.
-     *
-     * @param rawInputLine full raw user input line.
-     * @return true if the entire user input line should be ignored.
-     */
-    private boolean shouldIgnore(String rawInputLine) {
-        return rawInputLine.trim().isEmpty() || isCommentLine(rawInputLine);
-    }
-
-    /**
-     * Returns true if the user input line is a comment line.
-     *
-     * @param rawInputLine full raw user input line.
-     * @return true if input line is a comment.
-     */
-    private boolean isCommentLine(String rawInputLine) {
-        return rawInputLine.trim().matches(COMMENT_LINE_FORMAT_REGEX);
     }
 
     /**
@@ -66,17 +42,11 @@ public class TextUi {
      */
     public String getUserCommand() {
         out.print(Formatter.addDecorativeLinePrefix("Enter command: "));
-        String fullInputLine = in.nextLine();
-
-        // silently consume all ignored lines
-        while (shouldIgnore(fullInputLine)) {
-            fullInputLine = in.nextLine();
-        }
+        String fullInputLine = inputProcessor.getUserRawInput();
 
         showToUser("[Command entered:" + fullInputLine + "]");
         return fullInputLine;
     }
-
 
     public void showWelcomeMessage(String version, String storageFilePath) {
         String storageFileInfo = String.format(MESSAGE_USING_STORAGE_FILE, storageFilePath);
