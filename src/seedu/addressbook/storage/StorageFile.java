@@ -89,7 +89,13 @@ public class StorageFile {
         try {
             ensureStorageFileExists();
         } catch (FileNotFoundException fnfe) {
-            throw new StorageOperationException("Error trying to find file: " + path);
+            
+            // attempt recovery
+            try {
+                createEmptyFile(path);
+            } catch (IOException ioe) {
+                throw new StorageOperationException("Error writing to file: " + path);
+            }
         }
 
         /* Note: Note the 'try with resource' statement below.
