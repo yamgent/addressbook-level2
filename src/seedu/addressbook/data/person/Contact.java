@@ -2,7 +2,7 @@ package seedu.addressbook.data.person;
 
 /**
  * Represents a contact field for a Person.
- * Guarantees: immutable.
+ * Guarantees: immutable; is valid as declared in {@link #isValid(String)}
  * 
  * @author Tan Wang Leng
  */
@@ -39,5 +39,19 @@ public class Contact {
 
     public String getValue() {
         return value;
+    }
+    
+    /**
+     * Is the value given a valid one?
+     * 
+     * By default: we assume anything is valid,
+     * so if subclasses have any requirements they
+     * MUST override this class.
+     * 
+     * @param test string for validation
+     * @return validity
+     */
+    public boolean isValid(String test) {
+        return true;
     }
 }
