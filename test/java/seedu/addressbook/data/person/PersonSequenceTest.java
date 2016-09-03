@@ -1,4 +1,4 @@
-package seedu.addressbook.parser;
+package seedu.addressbook.data.person;
 
 import static org.junit.Assert.*;
 
