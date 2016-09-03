@@ -11,6 +11,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.tag.UniqueTagList;
 
 public class PersonSequenceTest {
 
@@ -25,7 +26,7 @@ public class PersonSequenceTest {
         AddressBook addressBook = new AddressBook();
 
         Person adam = new Person(new Name("Adam"), new Phone("555", false), new Email("a@a.com", false),
-                new Address("Blk A", false), null);
+                new Address("Blk A", false), new UniqueTagList());
         addressBook.addPerson(adam);
         assertEquals(1, adam.getSequenceNumber());
     }
