@@ -69,6 +69,10 @@ public class Name {
      * @return if the other name is indeed very similar to this name
      */
     public boolean isSimilar(Name other) {
+        if (other == null) {
+            return false;
+        }
+        
         return fullName.equals(other.fullName);
     }
 
