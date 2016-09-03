@@ -26,6 +26,10 @@ public class Utils {
      * Checks if every element in a collection are unique by {@link Object#equals(Object)}.
      */
     public static boolean elementsAreUnique(Collection<?> items) {
+        if (items == null) {
+            return true;
+        }
+        
         final Set<Object> testSet = new HashSet<>();
         for (Object item : items) {
             final boolean itemAlreadyExists = !testSet.add(item); // see Set documentation
