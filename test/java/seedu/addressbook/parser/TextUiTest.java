@@ -1,6 +1,6 @@
 package seedu.addressbook.parser;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ import seedu.addressbook.ui.TextUi;
 public class TextUiTest {
 
     @Test
-    public void textUi_printables_concatenatedCorrectly() throws IllegalValueException {
+    public void getPrintableString_normalInput_concatenatedCorrectly() throws IllegalValueException {
         final String phoneNumber = "123";
         final String emailAddress = "a@a.com";
         final String physicalAddress = "Blk A";
