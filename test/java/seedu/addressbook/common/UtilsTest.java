@@ -15,7 +15,7 @@ public class UtilsTest {
     }
     
     @Test
-    public void isAnyNull_SingleNonNullInput_returnsFalse() {
+    public void isAnyNull_singleNonNullInput_returnsFalse() {
         assertFalse(Utils.isAnyNull("Hi"));
     }
     
