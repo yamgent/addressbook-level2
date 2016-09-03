@@ -8,17 +8,18 @@ import org.junit.Test;
 import seedu.addressbook.data.exception.IllegalValueException;
 
 public class NameTest {
-    
-    private Name johnKSmith;
+    private static final String JOHN_K_SMITH = "John K Smith";  
+    private Name nameJohnKSmith;
     
     @Before
     public void setup() throws IllegalValueException {
-        johnKSmith = new Name("John K Smith");
+        nameJohnKSmith = new Name(JOHN_K_SMITH);
     }
 
     @Test
     public void isSimilar_nullInput_returnFalse() {
-        assertFalse(johnKSmith.isSimilar(null));
+        assertFalse(nameJohnKSmith.isSimilar(null));
     }
 
+    
 }
