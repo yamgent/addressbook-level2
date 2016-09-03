@@ -74,7 +74,7 @@ public class Name {
         }
         
         String ourNameInString = fullName.toLowerCase();
-        String otherNameInString = other.fullName;
+        String otherNameInString = other.fullName.toLowerCase();
         
         return ourNameInString.equals(otherNameInString);
     }
