@@ -21,5 +21,9 @@ public class NameTest {
         assertFalse(nameJohnKSmith.isSimilar(null));
     }
 
-    
+    @Test
+    public void isSimilar_exactSameName_returnTrue() throws IllegalValueException {
+        Name otherName = new Name(JOHN_K_SMITH);        
+        assertTrue(nameJohnKSmith.isSimilar(otherName));
+    }
 }
