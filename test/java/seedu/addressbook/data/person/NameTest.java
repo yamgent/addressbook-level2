@@ -26,4 +26,10 @@ public class NameTest {
         Name otherName = new Name(JOHN_K_SMITH);        
         assertTrue(nameJohnKSmith.isSimilar(otherName));
     }
+    
+    @Test
+    public void isSimilar_allLowerCase_returnTrue() throws IllegalValueException {
+        Name otherName = new Name(JOHN_K_SMITH.toLowerCase());
+        assertTrue(nameJohnKSmith.isSimilar(otherName));
+    }
 }
