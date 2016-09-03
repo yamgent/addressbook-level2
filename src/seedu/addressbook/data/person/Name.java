@@ -63,7 +63,7 @@ public class Name {
 
     /**
      * Two names are considered similar if... the other name
-     * is completely equivalent to ours.
+     * is completely equivalent to ours (case insensitive).
      * 
      * @param other name to compare with
      * @return if the other name is indeed very similar to this name
@@ -73,7 +73,10 @@ public class Name {
             return false;
         }
         
-        return fullName.equals(other.fullName);
+        String ourNameInString = fullName.toLowerCase();
+        String otherNameInString = other.fullName;
+        
+        return ourNameInString.equals(otherNameInString);
     }
 
 }
