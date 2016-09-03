@@ -56,7 +56,7 @@ public class AdaptedPerson {
 
         email = new AdaptedContactDetail();
         email.isPrivate = source.getEmail().isPrivate();
-        email.value = source.getEmail().value;
+        email.value = source.getEmail().getValue();
 
         address = new AdaptedContactDetail();
         address.isPrivate = source.getAddress().isPrivate();
