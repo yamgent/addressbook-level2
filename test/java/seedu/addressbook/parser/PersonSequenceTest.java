@@ -11,6 +11,7 @@ import seedu.addressbook.data.person.Email;
 import seedu.addressbook.data.person.Name;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.Phone;
+import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 import seedu.addressbook.data.tag.UniqueTagList;
 
 public class PersonSequenceTest {
@@ -20,9 +21,10 @@ public class PersonSequenceTest {
      * method)
      * 
      * @throws IllegalValueException
+     * @throws PersonNotFoundException 
      */
     @Test
-    public void testLoClassLevel() throws IllegalValueException {
+    public void testLoClassLevel() throws IllegalValueException, PersonNotFoundException {
         AddressBook addressBook = new AddressBook();
 
         Person adam = new Person(new Name("Adam"), new Phone("111", false), new Email("a@a.com", false),
@@ -39,6 +41,13 @@ public class PersonSequenceTest {
                 new Address("Blk C", false), new UniqueTagList());
         addressBook.addPerson(charlie);
         assertEquals(3, charlie.getSequenceNumber());
+        
+        addressBook.removePerson(ben);
+        
+        Person daisy = new Person(new Name("Daisy"), new Phone("444", false), new Email("d@d.com", false),
+                new Address("Blk D", false), new UniqueTagList());
+        addressBook.addPerson(daisy);
+        assertEquals(4, daisy.getSequenceNumber());
     }
 
 }
