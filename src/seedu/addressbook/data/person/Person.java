@@ -84,4 +84,8 @@ public class Person implements ReadOnlyPerson {
         return getAsTextShowAll();
     }
 
+    public int getSequenceNumber() {
+        return 1;
+    }
+
 }
