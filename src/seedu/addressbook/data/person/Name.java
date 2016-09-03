@@ -62,14 +62,14 @@ public class Name {
     }
 
     /**
-     * Two names are considered similar if... there exist such a test
-     * case, which means never.
+     * Two names are considered similar if... the other name
+     * is completely equivalent to ours.
      * 
      * @param other name to compare with
      * @return if the other name is indeed very similar to this name
      */
     public boolean isSimilar(Name other) {
-        return false;
+        return fullName.equals(other.fullName);
     }
 
 }
