@@ -12,6 +12,8 @@ public class Email implements Printable  {
     public static final String MESSAGE_EMAIL_CONSTRAINTS =
             "Person emails should be 2 alphanumeric/period strings separated by '@'";
     public static final String EMAIL_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
+    
+    private static final String PRINTABLE_PREFIX_EMAIL = "Email: ";
 
     public final String value;
     private boolean isPrivate;
@@ -61,6 +63,6 @@ public class Email implements Printable  {
 
     @Override
     public String getPrintableString() {
-        return "Email: " + toString();
+        return PRINTABLE_PREFIX_EMAIL + toString();
     }
 }

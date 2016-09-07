@@ -12,6 +12,8 @@ public class Address implements Printable {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
+    private static final String PRINTABLE_PREFIX_ADDRESS = "Address: ";
+
     public final String value;
     private boolean isPrivate;
 
@@ -58,6 +60,6 @@ public class Address implements Printable {
 
     @Override
     public String getPrintableString() {
-        return "Address: " + toString();
+        return PRINTABLE_PREFIX_ADDRESS + toString();
     }
 }
