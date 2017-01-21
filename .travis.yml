@@ -3,6 +3,9 @@ matrix:
   include:
     - jdk: oraclejdk8
     
+script:
+    - gradle --version
+    
 addons:
   apt:
     packages:
