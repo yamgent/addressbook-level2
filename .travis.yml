@@ -4,7 +4,7 @@ matrix:
     - jdk: oraclejdk8
 
 script:
-  - cd test && ./runtests.sh && cd .. # system tests
+  - test/runtests.sh
   - ./gradlew clean test # JUnit tests
 
 addons:
